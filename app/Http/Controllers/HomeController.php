@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Booking;
+use App\Models\Service;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $totalUsers = User::count();
+        $totalBookings = Booking::count();
+        $totalServices = Service::count();
+        return view('admin.dashboard', compact('totalUsers', 'totalBookings', 'totalServices'));
     }
 }

@@ -28,6 +28,35 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <title>@yield('title', 'PDC Portal')</title>
+    <style>
+         /* Make the whole page height 100% */
+    html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    }
+
+    /* The wrapper takes full height */
+    .wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    }
+
+    /* The content grows to fill space */
+    .content {
+    flex: 1;
+    }
+
+    /* Footer styles */
+    footer {
+    background: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    }
+
+    </style>
 </head>
 
 <body>

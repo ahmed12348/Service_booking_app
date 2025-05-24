@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ServiceRequest;
 use App\Models\Service;
 use Illuminate\Http\Request;
 
@@ -24,36 +25,21 @@ class ServiceController extends Controller
         return view('admin.services.create');
     }
 
-    public function store(Request $request)
+   public function store(ServiceRequest $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'price' => 'required|numeric|min:0',
-        ]);
-
-        // Service::create($request->all());
-       Service::create($request->only(['name', 'description', 'price']));
+        Service::create($request->only(['name', 'description', 'price']));
         return redirect()->route('admin.services.index')->with('success', 'Service created.');
+    }
+
+    public function update(ServiceRequest $request, Service $service)
+    {
+        $service->update($request->only(['name', 'description', 'price']));
+        return redirect()->route('admin.services.index')->with('success', 'Service updated.');
     }
 
     public function edit(Service $service)
     {
         return view('admin.services.edit', compact('service'));
-    }
-
-    public function update(Request $request, Service $service)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'price' => 'required|numeric|min:0',
-        ]);
-
-      
-        $service->update($request->only(['name', 'description', 'price']));
-
-        return redirect()->route('admin.services.index')->with('success', 'Service updated.');
     }
 
     public function destroy(Service $service)
