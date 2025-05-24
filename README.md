@@ -1,4 +1,4 @@
-<!-- <p align="center">
+<p align="center">
   <a href="https://laravel.com" target="_blank">
     <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo">
   </a>
@@ -17,58 +17,56 @@
   <a href="https://packagist.org/packages/laravel/framework">
     <img src="https://img.shields.io/packagist/l/laravel/framework" alt="License">
   </a>
-</p> -->
-
-# 📚 Service Booking App
-
-A Laravel-based booking platform that supports role management, service listings, and RESTful APIs secured via Laravel Sanctum.
+</p>
 
 ---
 
-## ✅ Features
+# Service Booking App (Laravel + Sanctum)
 
-- Laravel Sanctum Authentication (SPA or API)
-- Admin & User Roles
-- Blade-based Admin Panel for Services
-- API for Registration, Login, Bookings
-- API protected with Sanctum middleware
-- Booking System: Users book, Admin views all
-- Validation via Form Requests
-- Clean JSON Responses
+A full-featured Laravel project implementing a Service Booking platform with role-based access, blade admin panel, and secure API endpoints using Laravel Sanctum.
 
 ---
 
-## 🧾 Requirements
+## 🧰 Features
 
-- PHP 8.x
-- Laravel 10.x
-- MySQL/MariaDB
-- Node.js (for compiling assets)
-- Composer
+- Laravel Sanctum Authentication (Register, Login, Logout)
+- Role Management (Admin & User)
+- CRUD for Services (Admin via Blade views)
+- Booking System (User books, Admin views)
+- Secure API using `auth:sanctum` middleware
+- Form Request validation for all inputs
+- Clean and formatted JSON API responses
 
 ---
 
 ## ⚙️ Setup Instructions
 
 ```bash
-# 1. Clone the repository
-git clone https://github.com/your-username/service-booking-app.git
+# Clone repository
+git clone https://github.com/yourname/service-booking-app.git
 cd service-booking-app
 
-# 2. Install backend dependencies
+# Install backend dependencies
 composer install
 
-# 3. Install frontend dependencies
+# Install frontend dependencies
 npm install && npm run dev
 
-# 4. Setup environment
+# Create environment config
 cp .env.example .env
+
+# Generate application key
 php artisan key:generate
 
-# 5. Configure .env (DB & SANCTUM settings)
+# Set up your database credentials in .env
+# DB_DATABASE=your_db
+# DB_USERNAME=root
+# DB_PASSWORD=
 
-# 6. Run migrations and seeders
+# Run database migrations
 php artisan migrate --seed
 
-# 7. Serve the application
-php artisan serve
+# Install Sanctum
+composer require laravel/sanctum
+php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+php artisan migrate
